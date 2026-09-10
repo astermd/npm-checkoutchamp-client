@@ -1,0 +1,50 @@
+# Dependabot configuration.
+#
+# The groups exist because several of this repo's dev dependencies peer-depend
+# on each other at exact or narrow ranges, so a single-package major bump can
+# never resolve on its own: `@vitest/coverage-v8` pins `vitest` exactly, and
+# `@eslint/js` peers `eslint` at the matching major. Grouping them means one
+# PR that can actually go green.
+version: 2
+
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      vitest:
+        patterns:
+          - vitest
+          - '@vitest/*'
+      eslint:
+        patterns:
+          - eslint
+          - '@eslint/*'
+          - typescript-eslint
+          - eslint-config-prettier
+      build-tooling:
+        patterns:
+          - tsup
+          - publint
+          - prettier
+    ignore:
+      # typescript-eslint's peer range on typescript trails the latest
+      # release, so a major bump here is unsatisfiable and errors the whole
+      # updater run. Revisit when typescript-eslint supports the next major.
+      - dependency-name: typescript
+        update-types: ['version-update:semver-major']
+      # @types/node must track the *lowest* supported runtime, which is
+      # `engines.node` (>=22) — not the newest Node release.
+      - dependency-name: '@types/node'
+        update-types: ['version-update:semver-major']
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      github-actions:
+        patterns:
+          - '*'

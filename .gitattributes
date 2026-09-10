@@ -1,0 +1,24 @@
+* text=auto eol=lf
+
+*.ts text
+*.js text
+*.cjs text
+*.mjs text
+*.json text
+*.md text
+*.yml text
+
+# Belt-and-braces for `git archive` only. The published npm tarball is
+# already restricted by package.json's "files" field ("dist", "README.md",
+# "LICENSE"), which npm honours regardless of these attributes — the two
+# mechanisms do not need to (and do not) agree entry-for-entry, since
+# "files" is the actual publish boundary and this is a backstop for anyone
+# archiving the repo with git instead of installing from npm.
+/test             export-ignore
+/docs             export-ignore
+/.github          export-ignore
+/Makefile         export-ignore
+/tsconfig.json    export-ignore
+/tsup.config.ts   export-ignore
+/vitest.config.ts export-ignore
+/eslint.config.js export-ignore

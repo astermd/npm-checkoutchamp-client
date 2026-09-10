@@ -1,0 +1,78 @@
+{
+  "name": "@astermd-hq/checkoutchamp-client",
+  "version": "0.0.1",
+  "description": "Unofficial Node.js client for the Checkout Champ API: orders, leads, upsales, campaigns, customers, transactions and lander clicks, with opt-in redacted request logging.",
+  "keywords": [
+    "checkoutchamp",
+    "checkout-champ",
+    "api-client",
+    "rest-client",
+    "crm",
+    "ecommerce",
+    "orders",
+    "payments"
+  ],
+  "license": "MIT",
+  "author": "AsterMD <admin@astermd.com>",
+  "homepage": "https://github.com/astermd/npm-checkoutchamp-client",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/astermd/npm-checkoutchamp-client.git"
+  },
+  "bugs": {
+    "url": "https://github.com/astermd/npm-checkoutchamp-client/issues",
+    "email": "admin@astermd.com"
+  },
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "lint:package": "publint --strict",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:interop": "node test/interop/esm.test.mjs && node test/interop/cjs.test.cjs",
+    "build": "tsup",
+    "gate": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run build && npm run test:interop && npm run lint:package"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^22.10.0",
+    "@vitest/coverage-v8": "^5.0.0",
+    "eslint": "^10.10.0",
+    "eslint-config-prettier": "^10.0.0",
+    "prettier": "^3.4.0",
+    "publint": "^0.3.0",
+    "tsup": "^8.3.0",
+    "typescript": "^5.7.0",
+    "typescript-eslint": "^8.70.0",
+    "vitest": "^5.0.0"
+  }
+}
