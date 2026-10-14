@@ -73,6 +73,7 @@ export class API {
     importUpsale: 'order',
     confirm: 'order',
     qa: 'order',
+    orderCoupon: 'order',
     campaignQuery: 'campaign',
     customerQuery: 'customer',
     addnote: 'customer',
@@ -286,6 +287,25 @@ export class API {
    */
   public qa(params: Params = {}, options: CallOptions = {}): PendingCall {
     return this.prepare(this.order).qa(params, options);
+  }
+
+  /**
+   * Price a coupon code against a set of products without placing an order.
+   *
+   * Answers `{"priceDiscount": <dollars>, "shipDiscount": <dollars>}`. An
+   * unknown code is not an error: it answers SUCCESS with both amounts zero,
+   * exactly like a real code worth nothing on these products. An expired code
+   * answers ERROR "Coupon is expired".
+   *
+   * POST `/order/coupon/`
+   *
+   * @param params  Coupon fields, e.g. `{ campaignId, couponCode, product1_id }`.
+   * @param options Per-call settings.
+   *
+   * @returns The unsent call.
+   */
+  public orderCoupon(params: Params = {}, options: CallOptions = {}): PendingCall {
+    return this.prepare(this.order).orderCoupon(params, options);
   }
 
   /**

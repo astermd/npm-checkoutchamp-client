@@ -60,6 +60,13 @@ describe('Order', () => {
     assertRequest(http, '/order/qa/', { orderId: '123', qaStatus: 'APPROVED' });
   });
 
+  it('orderCoupon posts to /order/coupon/', async () => {
+    const { resource, http } = order();
+    const params = { campaignId: '7', couponCode: 'COUPON30', product1_id: '9', product1_qty: '1', shipCountry: 'US' };
+    await resource.orderCoupon(params);
+    assertRequest(http, '/order/coupon/', params);
+  });
+
   it('sends only the credentials when called with no parameters', async () => {
     const { resource, http } = order();
     await resource.orderQuery();

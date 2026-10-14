@@ -177,6 +177,7 @@ parameters object is sent as query string parameters.
 | `importUpsale(params?)` | `POST /upsale/import/` |
 | `confirm(params?)`      | `POST /order/confirm/` |
 | `qa(params?)`           | `POST /order/qa/`      |
+| `orderCoupon(params?)`  | `POST /order/coupon/`  |
 
 ### Campaigns
 

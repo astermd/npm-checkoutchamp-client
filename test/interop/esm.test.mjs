@@ -12,7 +12,7 @@ assert.equal(error.name, 'CheckoutChampError');
 assert.equal(typeof API, 'function');
 assert.equal(typeof PendingCall, 'function');
 assert.equal(typeof CallResult, 'function');
-assert.equal(API.supportedMethods().length, 14);
+assert.equal(API.supportedMethods().length, 15);
 
 const request = new Request('post', 'https://api.checkoutchamp.com/order/query/');
 assert.equal(request.method, 'POST');

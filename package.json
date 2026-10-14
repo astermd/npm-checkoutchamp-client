@@ -1,6 +1,6 @@
 {
   "name": "@astermd-hq/checkoutchamp-client",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Unofficial Node.js client for the Checkout Champ API: orders, leads, upsales, campaigns, customers, transactions and lander clicks, with opt-in redacted request logging.",
   "keywords": [
     "checkoutchamp",
